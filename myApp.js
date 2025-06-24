@@ -17,9 +17,6 @@ app.use((req, res, next) => {
 
     console.log(`${method} ${path} - ${ip}`);
 
-    if (path == "/now")
-        req.time = new Date().toString();
-
     next();
 });
 
@@ -32,7 +29,9 @@ app.get("/json", (req, res) => {
     res.json({ message });
 });
 
-app.get("/now", (req, res) => {
+app.get("/now", (req, res, next) => {
+    req.time = new Date().toString();
+}, (req, res) => {
     res.json({ time: req.time });
 })
 
