@@ -43,6 +43,14 @@ app.get("/:word/echo", (req, res) => {
     res.send({ echo: word });
 });
 
+app.route("/name").get((req, res) => {
+    const { first, last } = req.query;
+
+    res.send({ name: `${first} ${last}` });
+}).post((req, res) => {
+
+});
+
 app.get("/", (req, res) => {
     res.sendFile(indexPath);
 });
