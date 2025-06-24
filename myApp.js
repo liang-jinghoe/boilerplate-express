@@ -17,12 +17,9 @@ app.use((req, res, next) => {
 
     console.log(`${method} ${path} - ${ip}`);
 
-    next();
-});
+    if (path == "/now")
+        req.time = new Date().toString();
 
-app.use("/now", (req, res, next) => {
-    req.time = new Date().toString();
-    
     next();
 });
 
