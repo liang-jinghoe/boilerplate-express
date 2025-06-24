@@ -50,7 +50,9 @@ app.route("/name").get((req, res) => {
 
     res.send({ name: `${first} ${last}` });
 }).post((req, res) => {
+    const { first, last } = req.body;
 
+    res.send({ name: `${first} ${last}` });
 });
 
 app.get("/", (req, res) => {
