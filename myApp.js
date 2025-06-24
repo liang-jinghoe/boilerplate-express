@@ -20,14 +20,24 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use("/now", (req, res, next) => {
+    req.time = new Date().toString();
+    
+    next();
+});
+
 app.get("/json", (req, res) => {
     let message = "Hello json";
 
     if (process.env.MESSAGE_STYLE == "uppercase")
         message = message.toUpperCase();
 
-    return res.json({ message });
+    res.json({ message });
 });
+
+app.get("/now", (req, res) => {
+    res.json({ time: req.time });
+})
 
 app.get("/", (req, res) => {
     res.sendFile(indexPath);
