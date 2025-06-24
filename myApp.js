@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+let bp = require('body-parser');
 let express = require('express');
 let app = express();
 
@@ -9,6 +10,7 @@ const publicPath = __dirname + "/public";
 const indexPath = __dirname + "/views/index.html";
 
 app.use("/public", express.static(publicPath));
+app.use(bp.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
     const method = req.method;
