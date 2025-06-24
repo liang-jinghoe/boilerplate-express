@@ -3,10 +3,9 @@ let app = express();
 
 console.log("Hello World");
 
-const stylePath = __dirname = "/public/style.css";
 const indexPath = __dirname + "/views/index.html";
 
-app.use(express.static("/public"));
+app.use("/public", express.static("/public"));
 
 app.get("/", (req, res) => {
     res.sendFile(indexPath);
