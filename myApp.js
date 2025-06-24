@@ -8,7 +8,7 @@ const indexPath = __dirname + "/views/index.html";
 
 app.use("/public", express.static(publicPath));
 
-app.get("/index", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(indexPath);
 });
 
